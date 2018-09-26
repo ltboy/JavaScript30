@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js+css clock</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="clock-warp">
+    <div class="clock">
+      <div class="hand hand-hour"></div>
+      <div class="hand hand-minute"></div>
+      <div class="hand hand-second"></div>
+    </div>
+  </div>
+</body>
+<script>
+  class Clock {
+    constructor(time) {
+      this.hand_hour = document.querySelector('.hand-hour')
+      this.hand_minute = document.querySelector('.hand-minute')
+      this.hand_second = document.querySelector('.hand-second')
+      this.time = time && new Date(time) || new Date()
+    }
+
+    get hour() {
+      return (this.time.getHours() + this.time.getMinutes() / 60).toFixed(1)
+    }
+
+    get minute() {
+      return this.time.getMinutes()
+    }
+    get second() {
+      return this.time.getSeconds()
+    }
+    run() {
+      this.hand_hour.style = `transform:rotate(${360 * this.hour / 12}deg)`;
+      this.hand_minute.style = `transform:rotate(${360 * this.minute / 60}deg)`
+      this.hand_second.style = `transform:rotate(${360 * this.second / 60}deg)`
+      // return `${this.hour}-${this.minute}-${this.second}`
+    }
+    init() {
+      setInterval(() => {
+        this.run()
+        this.time = new Date()
+      }, 1000)
+    }
+  }
+  new Clock().init()
+</script>
+
+</html>
