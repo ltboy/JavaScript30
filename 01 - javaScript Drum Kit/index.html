@@ -40,6 +40,7 @@
   function handlClick(inx) {
     return playing.bind(null, inx)
   }
+
   function handlKeyDown(e) {
     const targetEl = document.querySelector(`audio[data-key="${e.keyCode}"]`)
     const index = sounds.indexOf(targetEl)
@@ -47,6 +48,7 @@
       playing(index)
     }
   }
+
   function transitionend(e) {
     if (e.propertyName !== 'transform') return
     e.target.classList.remove('playing')
