@@ -1,4 +1,6 @@
 # 02 js+css clock
+## 演示地址
+[demo地址](https://ltboy.github.io/JavaScript30/02 - js+css clock/index.html)
 ## 知识点：
 [class](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)
 
